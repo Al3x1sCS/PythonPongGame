@@ -1,4 +1,5 @@
 import turtle
+import winsound
 
 # Mark: Window
 
@@ -7,6 +8,22 @@ wn.title("Pong by AZ0iC")
 wn.bgcolor("black")
 wn.setup(width=800, height=600)
 wn.tracer(0)
+
+# Mark: Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0",
+          align="center",
+          font=("Courier", 24, "bold"))
+
+# Mark: Score
+
+score_a = 0
+score_b = 0
 
 # Mark: Paddle A
 
@@ -96,15 +113,27 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_a += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b),
+                  align="center",
+                  font=("Courier", 24, "bold"))
+
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_b += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b),
+                  align="center",
+                  font=("Courier", 24, "bold"))
 
     # Mark: Paddles and Ball collisions
 
     if (ball.xcor() > 300 and ball.xcor() < 340) and (paddle_b.ycor() + 40 > ball.ycor() > paddle_b.ycor() - 40):
         ball.setx(300)
         ball.dx *= -1
+
     if (ball.xcor() < -300 and ball.xcor() > -340) and (paddle_a.ycor() + 40 > ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-300)
         ball.dx *= -1
