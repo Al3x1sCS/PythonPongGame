@@ -118,6 +118,7 @@ while True:
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b),
                   align="center",
                   font=("Courier", 24, "bold"))
+        winsound.PlaySound("default", winsound.SND_ASYNC)
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
@@ -127,13 +128,16 @@ while True:
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b),
                   align="center",
                   font=("Courier", 24, "bold"))
+        winsound.PlaySound("default", winsound.SND_ASYNC)
 
     # Mark: Paddles and Ball collisions
 
     if (ball.xcor() > 300 and ball.xcor() < 340) and (paddle_b.ycor() + 40 > ball.ycor() > paddle_b.ycor() - 40):
         ball.setx(300)
         ball.dx *= -1
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC)
 
     if (ball.xcor() < -300 and ball.xcor() > -340) and (paddle_a.ycor() + 40 > ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-300)
         ball.dx *= -1
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC)
