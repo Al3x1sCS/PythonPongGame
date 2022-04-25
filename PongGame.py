@@ -84,6 +84,6 @@ while True:
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
 
-    # Mark: Border cheking
+    # Mark: Border checking
 
 
