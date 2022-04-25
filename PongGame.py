@@ -36,6 +36,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = 0.1
+ball.dy = 0.1
 
 
 # Mark: Function
@@ -76,3 +78,12 @@ wn.onkeypress(paddle_b_down, "Down")
 
 while True:
     wn.update()
+
+    # MARK:  Move the Ball
+
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # Mark: Border cheking
+
+
